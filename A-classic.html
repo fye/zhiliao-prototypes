@@ -102,6 +102,39 @@
   .coaching .row b{color:#3D3934;}
   .next-round{font-family:-apple-system,sans-serif;font-size:12px;color:#9C5B3B;text-align:center;
     padding:14px;border:1px dashed #C8A878;border-radius:10px;margin-top:8px;letter-spacing:1px;}
+  /* 视角展开内容 */
+  .view-body{padding:14px 0 4px;font-family:-apple-system,sans-serif;}
+  .view-body .vb-row{font-size:12.5px;line-height:1.7;margin-bottom:10px;color:#6B635A;}
+  .view-body .vb-row b{color:#9C5B3B;font-size:11px;letter-spacing:1px;display:block;margin-bottom:3px;font-weight:600;}
+  .view-body .vb-row span{color:#3D3934;}
+  /* 支线区 */
+  .sidelines{margin:24px 0;}
+  .sidelines .sh{font-family:-apple-system,sans-serif;font-size:11px;color:#A89B8C;letter-spacing:2px;
+    margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .sidelines .sh::before{content:"🌿";font-size:13px;}
+  .sidelines .sh::after{content:"";flex:1;height:1px;background:#E8E2D5;}
+  .sideline{background:#FFF;border:1px solid #E8E2D5;border-radius:14px;padding:16px 18px;margin-bottom:14px;}
+  .sideline .trigger{font-family:-apple-system,sans-serif;font-size:11px;color:#9C5B3B;background:#F5F0E6;
+    display:inline-block;padding:3px 9px;border-radius:4px;margin-bottom:10px;letter-spacing:.5px;}
+  .sideline .stitle{font-size:14px;color:#2D2A26;font-weight:600;margin-bottom:12px;}
+  /* 来源 */
+  .sources{font-family:-apple-system,sans-serif;font-size:12px;color:#6B635A;line-height:1.8;}
+  .sources .src{padding:8px 0;border-bottom:1px solid #F0EBE0;display:flex;gap:10px;align-items:baseline;}
+  .sources .src:last-child{border-bottom:none;}
+  .sources .src .type{font-size:10px;color:#A89B8C;background:#F5F0E6;padding:2px 7px;border-radius:3px;flex-shrink:0;letter-spacing:.5px;}
+  .sources .src .info b{color:#3D3934;font-weight:600;}
+  /* 带走问题 */
+  .takeaway{background:linear-gradient(135deg,#F5F0E6,#FFF);border:1px solid #E8DCC8;border-radius:16px;
+    padding:20px 22px;margin:24px 0;text-align:center;}
+  .takeaway .tt{font-family:-apple-system,sans-serif;font-size:11px;color:#9C5B3B;letter-spacing:2px;margin-bottom:10px;font-weight:600;}
+  .takeaway .tq{font-size:15px;color:#2D2A26;font-style:italic;line-height:1.7;font-weight:500;}
+  /* 底部固定操作栏 */
+  .action-bar{position:absolute;bottom:0;left:0;right:0;background:#FAF7F2;border-top:1px solid #E8E2D5;
+    padding:12px 20px 28px;display:flex;gap:10px;}
+  .action-bar .btn{flex:1;text-align:center;padding:13px;border-radius:12px;font-family:-apple-system,sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .action-bar .btn.primary{background:#9C5B3B;color:#fff;}
+  .action-bar .btn.ghost{background:#FFF;border:1px solid #D8CFC0;color:#6B635A;flex:0 0 48px;}
 </style>
 </head>
 <body>
@@ -155,7 +188,7 @@
   <div class="label">屏 1 · 首页</div>
 </div>
 
-<!-- ============ 屏 2：详情页 ============ -->
+<!-- ============ 屏 2：详情页（完整填充） ============ -->
 <div class="phone">
   <div class="statusbar"><span>9:41</span><span class="dot"><i></i><i></i><i></i></span></div>
   <div class="topbar">
@@ -163,27 +196,47 @@
     <span class="agepill">少儿 6-9 ▾</span>
     <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="#9C5B3B" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
   </div>
-  <div class="scroll detail">
+  <div class="scroll detail" style="padding-bottom:90px;">
     <div class="detail-meta"><span class="pill">经济·社会</span><span class="pill">★★</span><span class="pill">20 分钟</span></div>
     <h1>给女性更多福利，<br>对她们就业是利是弊？</h1>
     <div class="quote">给妈妈放假越多、福利越好，听起来是好事。可产假越长，女性反而越难找工作。为什么"保护"成了"束缚"？</div>
 
     <div class="h2">这事是怎么回事</div>
-    <div class="body"><p>几乎每个国家都有针对女性的特殊福利——产假、哺乳室、提前退休。初衷都是好的：女性在生育中付出更多，理应得到补偿。</p>
-    <p>但经济学家发现一个反直觉现象：这类"保护性"政策越多的国家，女性就业率反而越低、工资差距越大……</p></div>
+    <div class="body">
+      <p>世界上几乎每个国家都有针对女性的特殊福利——产假、哺乳室、提前退休、专项补贴。初衷都是好的：女性在生育中付出了更多，理应在职场得到补偿和保护。</p>
+      <p>但经济学家发现了一个反直觉的现象：这类"保护性"政策越多、力度越大的国家，女性的就业率反而越低、工资差距越大、越难升到高管。北欧一些国家延长产假后，企业招聘时对年轻女性的顾虑明显增加。</p>
+      <p>这就是问题的张力：一项出于善意的政策，为什么可能伤害它想保护的人？</p>
+    </div>
 
     <div class="h2">大家怎么看（速览）</div>
-    <div class="view"><div class="vh"><div class="vt">视角一<span>保护论 · 补偿正义</span></div><div class="vchev">展开 ▾</div></div></div>
-    <div class="view"><div class="vh"><div class="vt">视角二<span>市场论 · 激励与成本</span></div><div class="vchev">展开 ▾</div></div></div>
-    <div class="view"><div class="vh"><div class="vt">视角三<span>制度设计论 · 成本谁担</span></div><div class="vchev">展开 ▾</div></div></div>
+
+    <div class="view">
+      <div class="vh"><div class="vt">视角一<span>保护论 · 补偿正义</span></div><div class="vchev">已展开 ▴</div></div>
+      <div class="view-body">
+        <div class="vb-row"><b>核心主张</b><span>女性在生育中承担了远超男性的生理与社会成本，政策必须给予补偿和保护，否则就是不公平。</span></div>
+        <div class="vb-row"><b>论据</b><span>没有产假保护，很多女性只能在"生孩子"和"保工作"间二选一。国际劳工组织的《生育保护公约》就是基于这个逻辑。</span></div>
+        <div class="vb-row"><b>盲点</b><span>它假设"保护"只有好处。但如果成本最终落在企业头上，企业就会"少招女性"。它聚焦已经工作的女性，却没看到：保护越多，还没进来的女性反而更难踏进门槛。</span></div>
+      </div>
+    </div>
+
+    <div class="view">
+      <div class="vh"><div class="vt">视角二<span>市场论 · 激励与成本</span></div><div class="vchev">展开 ▾</div></div>
+    </div>
+
+    <div class="view">
+      <div class="vh"><div class="vt">视角三<span>制度设计论 · 成本谁担</span></div><div class="vchev">展开 ▾</div></div>
+    </div>
+
+    <div style="font-family:-apple-system,sans-serif;font-size:12px;color:#A89B8C;text-align:center;margin:6px 0 20px;letter-spacing:1px;">▾ 详细推演见下方对话，观点会在父母与孩子的追问中自然涌现 ▾</div>
 
     <div class="h2">🍽 今晚怎么聊</div>
 
+    <!-- 第 1 轮 -->
     <div class="round">
       <div class="rt">第 ① 轮 · 开场：先听孩子的直觉</div>
       <div class="bubble parent">
         <div class="who">妈妈</div>
-        <div class="txt">今天跟你说个反直觉的事。给女员工更长的产假、更好的福利，听起来是帮她们对吧？但经济学研究发现，福利越好的国家，女性反而越难找工作。你说，这是为什么？</div>
+        <div class="txt">今天跟你说个反直觉的事。给女员工更长的产假、更好的福利，听起来是帮她们对吧？但经济学研究发现，福利越好的国家，女性反而越难找工作、工资更低。你说，这是为什么？</div>
       </div>
       <div class="child-branch">
         <div class="branch-item">🧒 「不知道」<span class="go">→ 跳第②轮</span></div>
@@ -192,20 +245,313 @@
       </div>
       <div class="coaching">
         <div class="ct">▾ 父母怎么引导</div>
-        <div class="row"><b>目的</b>：先听孩子直觉判断，无论对错都别急着纠正。</div>
-        <div class="row"><b>变招</b>：说"不知道"用类比导入；说"公司麻烦"直接肯定进③；说"自己不想"记下来支线 A 拆解。</div>
+        <div class="row"><b>目的</b>：先让孩子说出自己的直觉判断，无论对错都不要急着纠正。这是讨论的起点，孩子的第一反应往往暴露他潜在的思维方式。</div>
+        <div class="row"><b>怎么接</b>：说"不知道"→ 用打扫卫生类比导入；说"公司觉得麻烦"→ 直接肯定，进入第③轮；说"女性自己不想工作了"→ 这是常见的"指责受害者"思路，先肯定观察，但支线 A 会回来拆解。</div>
       </div>
     </div>
 
-    <div class="next-round">展开第 ② 轮 ↓</div>
-
-    <div class="h2">🧰 思辨工具箱</div>
-    <div class="body" style="font-family:-apple-system,sans-serif;font-size:13px;color:#6B635A;line-height:1.9;">
-      <p><b style="color:#9C5B3B">激励与成本</b> — 改变成本就改变行为</p>
-      <p><b style="color:#9C5B3B">看得见的与看不见的</b> — 别只看得到得福利的人</p>
+    <!-- 第 2 轮 -->
+    <div class="round">
+      <div class="rt">第 ② 轮 · 类比导入：用打扫卫生把抽象问题变具体</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">我给你打个比方。假如班里轮流打扫卫生，有个同学因为生病需要少干一点。老师规定：他少干的活，全班其他人分摊。听起来挺合理对吧？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">对啊，他生病了嘛。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">那如果老师规定<b>每次</b>这个同学都少干，一直如此呢？时间一长，其他人会怎么想？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">……会觉得不公平吧？凭什么每次都是我们多干。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">对。你看，帮助一个人和让一群人长期为这份帮助买单，是两件不同的事。我们今天聊的女性福利，背后就有类似的账。</div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：用孩子能懂的具象场景（打扫卫生），帮他感受到"保护"和"成本转嫁"的张力——这是整个议题的核心直觉。</div>
+        <div class="row"><b>对应</b>：市场论（成本不会消失，只会转移）</div>
+        <div class="row"><b>怎么接</b>：孩子一旦说出"不公平"，就说明他已经摸到核心了，可以进入第③轮。如果孩子说"那让老师帮他干不就行了"→ 太棒了！这孩子直接跳到了"制度设计论"，跳到第⑥轮跟他深聊"谁出钱"。</div>
+      </div>
     </div>
+
+    <!-- 第 3 轮 -->
+    <div class="round">
+      <div class="rt">第 ③ 轮 · 引入"成本"：把直觉翻译成经济学语言</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">回到公司。每个阿姨如果要放长假、还要发工资，每个叔叔不用。你要是老板，招人时会怎么想？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那肯定多招叔叔啊，省钱。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt"><b>对！很多老板就这么想。</b> 你刚才做的事，经济学家有个词叫——<b>算成本</b>。每多一项针对女性的福利，公司在女员工身上就多花一笔钱。公司不会明说"我不招女的"，但会默默偏向招男的。这叫"激励"——你改变了一个东西的成本，就改变了人的行为。</div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：把孩子的直觉（"省钱"）翻译成"成本"和"激励"这两个经济学概念。不要直接灌输概念，先让孩子自己说出来，再贴标签——这样概念才"长"在他脑子里。</div>
+        <div class="row"><b>对应</b>：市场论 · 激励与成本</div>
+        <div class="row"><b>怎么接</b>：这一步是分水岭。孩子如果到这里只觉得"哦公司坏"，下一轮第④轮要让他看到公司其实也是"身不由己"。</div>
+      </div>
+    </div>
+
+    <!-- 第 4 轮 -->
+    <div class="round">
+      <div class="rt">第 ④ 轮 · 反转：公司不是坏，是"身不由己"</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">但我想问你一个更深的问题。你觉得老板这么做，是因为他"坏"吗？还是因为别的原因？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">……可能也不是坏，他就是想多赚钱？</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">对。公司要赚钱才能活下去，要跟别的公司竞争。如果别的公司都不招女的、成本低、东西卖得便宜，他那家公司还招很多女的，成本高、东西卖得贵，会被挤垮。<b>所以这不是某个老板坏不坏的问题，是整个市场的算盘在起作用。</b>哪怕老板本人是个很好的人，他的手也会被"成本"这只看不见的手绑住。</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那……这事好像怪不了谁。</div></div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：非常关键的一步——防止孩子把复杂社会问题简化成"坏人干坏事"。思辨的核心之一，就是看到"系统"而不是"个人"在起作用。一个"好老板"在坏系统里，也可能做出伤害女性的决定。</div>
+        <div class="row"><b>对应</b>：市场论（结构性约束）· 个人 vs 结构</div>
+        <div class="row"><b>怎么接</b>：孩子说出"怪不了谁"，说明他已经感受到"结构"的力量。这时可以进入第⑤轮，抛出第一个反直觉追问。</div>
+      </div>
+    </div>
+
+    <!-- 第 5 轮 -->
+    <div class="round">
+      <div class="rt">第 ⑤ 轮 · 第一重反直觉：那干脆别给福利好了？</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">好，那既然福利反而让女性更难找工作，<b>我们干脆别给任何福利，不就解决问题了吗？</b></div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那不行！那女员工生孩子就没保障了，会被开除。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">你看，<b>你自己</b>发现了关键——这事是个"两难"。给，企业排斥女性；不给，女性吃亏。<b>世界上很多真问题，不是"对 vs 错"，而是"坏 vs 更坏"。</b>能给一个简单答案的，通常都是假问题。</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那到底怎么办？</div></div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：训练孩子识别"两难"——这是思辨最重要的能力之一。能意识到"这事没有简单答案"，比记住任何具体答案都重要。</div>
+        <div class="row"><b>对应</b>：市场论和保护论的盲点互相暴露</div>
+        <div class="row"><b>怎么接</b>：孩子问"那到底怎么办"，正是引入第⑥轮制度设计论的最好时机。</div>
+      </div>
+    </div>
+
+    <!-- 第 6 轮 -->
+    <div class="round">
+      <div class="rt">第 ⑥ 轮 · 制度设计论：关键不是"要不要"，而是"谁出钱"</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">有个国家真的想了个办法——瑞典。他们规定：产假照放，工资照发，但<b>钱不是公司出，是国家出</b>，也就是用大家交的税。你觉得这样公司还会不愿意招阿姨吗？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那应该就不会了吧？反正不是公司出钱。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">对，瑞典那边女性就业率反而更高。经济学家把这个道理叫一个很厉害的名字——<b>"内部化外部成本"</b>。听起来很复杂，其实就一句话：<b>如果一件事的好处是大家的，那成本也应该大家扛，不能让某一个人或某一家公司单独扛。</b></div>
+      </div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">回到打扫卫生那个例子——如果那个同学少干的活，不是让你们分摊，而是<b>老师花钱请个人来干</b>，你们还会介意吗？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">那肯定不会啊，又不花我们的时间。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">你看，<b>同样一件事，"谁出钱"变了，结果就完全变了。</b>所以以后遇到"该不该做某事"的问题，别只问要不要做，<b>多问一句：谁在买单？</b></div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：全场最核心的一步——把"要不要保护"这个假两难，转化为"成本由谁承担"这个真问题。这是经济学家看世界的独特视角，也是这个议题最有价值的 takeaway。</div>
+        <div class="row"><b>对应</b>：制度设计论 · 内部化外部成本 · 代价分配追问</div>
+        <div class="row"><b>怎么接</b>：到这孩子可能觉得"完美解决了"，下一轮第⑦轮要戳破这个"完美"，让他看到任何方案都有代价。如果孩子问"为什么不学瑞典"→ 切支线 B。</div>
+      </div>
+    </div>
+
+    <!-- 第 7 轮 -->
+    <div class="round">
+      <div class="rt">第 ⑦ 轮 · 戳破"完美方案"：税从哪来？</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">听起来瑞典这办法挺好。但我想再追一个问题给你——<b>国家发的钱，从哪来？</b></div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">……税收？</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">对，税收。也就是<b>所有人</b>交的钱，包括你未来工作以后也要交。那我问你：让你为一个你不认识的妈妈放产假买单，你愿意吗？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">呃……要看交多少。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt"><b>这个"看多少"的反应特别真实。</b>现在你想一想：为什么让你为陌生妈妈买单，你会犹豫；但刚才说到"保护女性"时，你又觉得是应该的？<b>这两种感觉打架吗？</b></div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">好像……是有点打架。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">这种"打架"特别宝贵——它说明你发现了：<b>没有哪个方案是没代价的。</b>让公司出钱，公司不招女性；让你出钱（税），你也不情愿。<b>每一份"好处"，最后都有人在买单。成熟的人不是找一个"没代价"的方案，而是想清楚这个代价由谁承担，才是公平的。</b></div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：戳破"瑞典方案是完美答案"的幻觉，把思考推向更深——任何方案都有代价，关键在于代价分配是否公平。这是从"找答案"到"权衡"的跃迁。</div>
+        <div class="row"><b>对应</b>：制度设计论的盲点 · 看得见的与看不见的 · 代价分配追问</div>
+        <div class="row"><b>怎么接</b>：到这一步，孩子已经从"单层判断"走到了"多层权衡"。下一轮第⑧轮是终局追问，把整个讨论升华到"公平是什么"。</div>
+      </div>
+    </div>
+
+    <!-- 第 8 轮 -->
+    <div class="round">
+      <div class="rt">第 ⑧ 轮 · 终极追问：公平到底是什么？</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">我们聊到这，我想问你一个最难的：<b>到底什么叫"公平"？</b></div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">……就是大家都一样？</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">那我问你——给女性<b>特殊</b>的福利（跟男的不一样），算公平，还是不公平？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">嗯……算公平吧？因为她们生孩子辛苦。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">好，这是第一种公平——叫<b>"补偿性公平"</b>：谁付出多，就给谁多一点。<b>但也有人觉得</b>，真正的公平是<b>"谁也不搞特殊"</b>，男女完全一样对待。这叫"形式公平"。你觉得哪个更对？</div>
+      </div>
+      <div class="bubble child"><div class="who">孩子</div><div class="txt">……好像都有道理。</div></div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt"><b>你能觉得"都有道理"，就比大多数人强了。</b>因为很多人只会死守一个答案。我再给你第三种：也许公平根本不是"给不给特殊照顾"的问题，而是——<b>不管给不给，都得想清楚代价由谁承担。</b>给特殊照顾，就别让公司单独扛；不给，就别让女性单独扛。<b>真正的公平，不是"对谁好"，而是"不让任何一方单独承担代价"。</b>你觉得呢？</div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：终局升华。把整场讨论从"具体政策"拉升到"公平的本质"——这是哲学层面的训练。不要给孩子"标准答案"，让他停在"都有道理"的张力里，这是思辨最珍贵的状态。</div>
+        <div class="row"><b>对应</b>：三个视角的综合 · 补偿性公平 vs 形式公平</div>
+        <div class="row"><b>怎么接</b>：到这可以收尾了。也可以丢一个开放问题让孩子自己想（见下方带走问题）。如果孩子说"干脆男女完全一样"→ 切支线 C 挑战"绝对平等=公平"。</div>
+      </div>
+    </div>
+
+    <!-- 第 9 轮 收尾 -->
+    <div class="round">
+      <div class="rt">第 ⑨ 轮 · 收尾：把讨论沉淀成可带走的方法</div>
+      <div class="bubble parent">
+        <div class="who">妈妈</div>
+        <div class="txt">今天聊得挺深了。我跟你总结一个<b>以后能一直用</b>的本事：<br><br>以后听到有人说"我们要给某个群体特殊照顾"，或者"我们要禁止某个东西"，你别急着说好或不好。<b>多问两个问题：</b><br><br>1️⃣ <b>这份"好处"或"禁止"，最后是谁在买单？</b>（看得见的与看不见的）<br>2️⃣ <b>买单的人，跟享受好处的人，是同一批人吗？</b>如果不是，这公不公平？<br><br>这两个问题，是经济学家看世界的眼镜。戴上它，你会看到很多别人看不到的东西。</div>
+      </div>
+      <div class="coaching">
+        <div class="ct">▾ 父母怎么引导</div>
+        <div class="row"><b>目的</b>：把整场讨论沉淀成一个可带走的思维工具，而不只是一次性的话题。这才是"思辨训练"——不是记住某个观点，而是获得一种可复用的思考方式。</div>
+        <div class="row"><b>对应</b>：看得见的与看不见的 · 代价分配追问</div>
+        <div class="row"><b>关键</b>：结束时不要给"标准答案"，要让孩子带着问题离开餐桌。</div>
+      </div>
+    </div>
+
+    <!-- 支线 -->
+    <div class="sidelines">
+      <div class="sh">备选支线 · 当孩子说出特定话时切换</div>
+
+      <div class="sideline">
+        <div class="trigger">当孩子说「那是不是女性自己不想工作了 / 是女性自己的问题」</div>
+        <div class="stitle">🌿 支线 A · 拆解"指责受害者"</div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">你这个想法，其实很多人都有。但我想让你多想一步——<b>如果一个妈妈生了孩子，公司不给她假期，她只能辞职。这是"她自己不想工作"，还是"她没办法工作"？</b></div>
+        </div>
+        <div class="bubble child"><div class="who">孩子</div><div class="txt">好像是没办法。</div></div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt"><b>所以"看起来是个人选择的事，背后可能有系统的原因"。</b>这是思辨里特别重要的一点——<b>别急着怪个人，先看看是不是环境逼的。</b>如果一个游泳池里大多数人都在原地不动，你说是他们不爱游泳，还是水温有问题？</div>
+        </div>
+        <div class="coaching">
+          <div class="ct">▾ 父母怎么引导</div>
+          <div class="row"><b>目的</b>：拆解"指责受害者"的思维误区。这是讨论性别议题时孩子（和很多大人）很容易滑向的方向，必须当场轻轻拨回来，但不要说教。</div>
+          <div class="row"><b>对应</b>：个人 vs 结构</div>
+        </div>
+      </div>
+
+      <div class="sideline">
+        <div class="trigger">当孩子问「那为什么我们不学瑞典？」</div>
+        <div class="stitle">🌿 支线 B · 制度不能简单"抄作业"</div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">好问题！瑞典那套要花很多钱，所以税收很高，他们国民也习惯了。每个国家的情况不一样——有的国家税收本就不够用，有的国民不愿意交那么多税。<b>所以"好办法"不是从天上掉下来的，得有条件配合。</b>这也是为什么很多事不能简单"抄作业"。</div>
+        </div>
+        <div class="coaching">
+          <div class="ct">▾ 父母怎么引导</div>
+          <div class="row"><b>目的</b>：防止孩子滑向"别人家的更好"的简单比较，教他看到任何制度都嵌在具体条件里。</div>
+          <div class="row"><b>注意</b>：不要评价具体国家优劣，保持中性。</div>
+        </div>
+      </div>
+
+      <div class="sideline">
+        <div class="trigger">当孩子说「那就男女完全一样，啥特殊都不要」</div>
+        <div class="stitle">🌿 支线 C · 挑战"绝对平等=公平"</div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">这是个很硬核的思路——叫"真正的平等就是没有任何差异对待"。但它有个绕不开的事实：<b>生孩子这件事，男女在生理上就是不对等的，妈妈承担的身体代价没法均摊。</b>所以"完全一样对待"，是不是反而成了另一种不公平？</div>
+        </div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">你想想：假如班里有个同学腿骨折了，老师让他跟所有人一样跑步，说"这才公平"。你觉得这真公平吗？</div>
+        </div>
+        <div class="bubble child"><div class="who">孩子</div><div class="txt">不公平，他跑不了。</div></div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">对。<b>有时候"一样对待"反而是不公平的，因为起点本来就不一样。</b>这就是为什么"公平"这么难。</div>
+        </div>
+        <div class="coaching">
+          <div class="ct">▾ 父母怎么引导</div>
+          <div class="row"><b>目的</b>：挑战"绝对平等=公平"的直觉，引向"补偿性公平"。用骨折同学的类比，让抽象问题变具体。</div>
+          <div class="row"><b>对应</b>：保护论（补偿正义）· 补偿性公平 vs 形式公平</div>
+        </div>
+      </div>
+
+      <div class="sideline">
+        <div class="trigger">当孩子全程兴趣不高、只说「不知道 / 随便」</div>
+        <div class="stitle">🌿 支线 D · 埋下一颗种子</div>
+        <div class="bubble parent">
+          <div class="who">妈妈</div>
+          <div class="txt">没事，这题本来就没标准答案，连大人都吵不清楚。但我跟你打个赌——<b>等你长大了，不管你是男孩女孩，你都会遇到类似的事</b>：有个规则说是"为你好"，结果反而限制了你。到时候你想起今天的聊天，可能就有点用。</div>
+        </div>
+        <div class="coaching">
+          <div class="ct">▾ 父母怎么引导</div>
+          <div class="row"><b>目的</b>：不强求孩子当下"想明白"，但要埋下一颗种子——让他知道这事跟他有关。有些讨论的价值在几年后才显现。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 思辨工具箱 -->
+    <div class="h2">🧰 思辨工具箱</div>
+    <div style="font-family:-apple-system,sans-serif;">
+      <div class="view-body" style="padding:8px 0;">
+        <div class="vb-row"><b>激励与成本</b><span>改变成本就改变行为，"好意"不等于"好结果"。→ 第③轮 公司为什么回避招女性</span></div>
+        <div class="vb-row"><b>看得见的与看不见的</b><span>别只看得到得到福利的女员工，还要看到那个因此没被录用的女性。→ 第⑦轮 税收的代价</span></div>
+        <div class="vb-row"><b>内部化外部成本</b><span>一件事的好处是大家的，成本也应大家扛。→ 第⑥轮 瑞典方案</span></div>
+        <div class="vb-row"><b>个人 vs 结构</b><span>别急着怪个人，先看是不是系统逼的。→ 支线 A</span></div>
+        <div class="vb-row"><b>代价分配追问</b><span>别问"要不要做"，问"谁在买单"。→ 第⑦⑧轮</span></div>
+        <div class="vb-row"><b>补偿性公平 vs 形式公平</b><span>"一样对待"未必公平，因为起点不一样。→ 第⑧轮 · 支线 C</span></div>
+      </div>
+    </div>
+
+    <!-- 带走问题 -->
+    <div class="takeaway">
+      <div class="tt">📝 留给孩子想</div>
+      <div class="tq">"如果生孩子这件事，代价该由谁来扛，才算公平？是妈妈？是公司？是所有人（税收）？还是干脆不生？"<br><br><span style="font-size:12px;color:#A89B8C;font-style:normal;">没有答案，但能让他在脑子里再转一圈。</span></div>
+    </div>
+
+    <!-- 来源 -->
+    <div class="h2">📚 想深挖可以看</div>
+    <div class="sources">
+      <div class="src"><span class="type">书</span><div class="info"><b>《事业还是家庭？》</b> · Claudia Goldin<br>2023 诺贝尔经济学奖得主，研究女性劳动力市场困境</div></div>
+      <div class="src"><span class="type">书</span><div class="info"><b>《性别经济学》</b> · 中文语境性别与经济议题入门</div></div>
+      <div class="src"><span class="type">论文</span><div class="info"><b>The Economics of Discrimination</b> · Gary Becker (1957)<br>歧视经济学奠基之作</div></div>
+      <div class="src"><span class="type">论文</span><div class="info"><b>That Which is Seen, and That Which is Not Seen</b> · Bastiat (1850)<br>"看得见与看不见"框架的源头</div></div>
+    </div>
+
+    <div style="height:80px;"></div>
   </div>
-  <div class="label">屏 2 · 详情页（对话展开）</div>
+
+  <!-- 底部固定操作栏 -->
+  <div class="action-bar">
+    <div class="btn ghost">♡</div>
+    <div class="btn primary">记一笔这次讨论</div>
+  </div>
+  <div class="label">屏 2 · 详情页（完整填充）</div>
 </div>
 
 </body>
