@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>知了·对话录 · C 暖意手作风</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; }
+  body {
+    font-family: "PingFang SC","Hiragino Sans GB",-apple-system,sans-serif;
+    background: #E6D5C3;
+    display:flex; gap:40px; padding:40px; flex-wrap:wrap; justify-content:center;
+  }
+  /* 纸纹理 */
+  .phone {
+    width:375px; height:812px; background:#FFF8F0;
+    background-image: radial-gradient(circle at 20% 30%, rgba(212,165,116,.06) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 70%, rgba(180,120,80,.05) 0%, transparent 50%);
+    border-radius:42px; overflow:hidden;
+    box-shadow:0 30px 60px rgba(120,80,40,.3), 0 0 0 11px #6B4A2B, 0 0 0 12px #8B6239;
+    position:relative; display:flex; flex-direction:column;
+  }
+  .label{position:absolute;bottom:-44px;left:0;right:0;text-align:center;color:#8B6239;font-size:13px;}
+  .statusbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;
+    font-size:14px;font-weight:600;color:#5C3D1E;}
+  .statusbar .dot{display:flex;gap:5px;}
+  .statusbar .dot i{display:block;width:4px;height:4px;border-radius:50%;background:#5C3D1E;}
+  .topbar{padding:4px 22px 14px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{font-size:22px;font-weight:700;color:#5C3D1E;letter-spacing:1px;}
+  .brand small{font-size:10px;color:#C49B6E;display:block;font-weight:500;letter-spacing:2px;margin-top:-2px;}
+  .top-actions{display:flex;gap:10px;align-items:center;}
+  .agepill{background:#E89B5C;color:#fff;font-size:11px;padding:6px 13px;border-radius:24px;font-weight:600;
+    box-shadow:0 2px 6px rgba(232,155,92,.4);}
+  .icon{width:22px;height:22px;}
+  .scroll{flex:1;overflow-y:auto;padding:0 22px 100px;}
+  .scroll::-webkit-scrollbar{display:none;}
+  /* 手绘风章节标题 */
+  .sec-label{font-size:13px;color:#8B6239;font-weight:700;margin:22px 0 12px;display:flex;align-items:center;gap:8px;}
+  .sec-label .deco{font-size:16px;}
+  /* hero 大卡：像贴在桌上的便签 */
+  .hero{background:#fff;border-radius:20px;padding:22px 20px;position:relative;
+    box-shadow:0 4px 14px rgba(139,98,57,.12);
+    transform:rotate(-.6deg);}
+  .hero::before{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%) rotate(2deg);
+    width:54px;height:18px;background:rgba(232,155,92,.35);border-radius:3px;}
+  .hero .meta{font-size:11px;color:#C49B6E;margin-bottom:14px;font-weight:600;}
+  .hero .meta b{color:#E89B5C;}
+  .hero .meta .sep{margin:0 6px;color:#E0CBAE;}
+  .hero h2{font-size:24px;line-height:1.35;color:#5C3D1E;font-weight:700;}
+  .hero .hook{font-size:13.5px;color:#8B6239;line-height:1.7;margin-top:14px;
+    background:#FFF4E6;border-radius:12px;padding:12px 14px;}
+  .hero .hook::before{content:"💡 ";font-size:14px;}
+  .hero .cta{margin-top:18px;background:#E89B5C;color:#fff;text-align:center;padding:13px;border-radius:26px;
+    font-size:14px;font-weight:600;box-shadow:0 4px 12px rgba(232,155,92,.4);}
+  /* 小卡 */
+  .mini{background:#fff;border-radius:16px;padding:15px 16px;margin-top:12px;display:flex;gap:12px;align-items:center;
+    box-shadow:0 2px 8px rgba(139,98,57,.08);}
+  .mini .emoji{font-size:22px;width:36px;height:36px;background:#FFF4E6;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .mini .t{font-size:13.5px;color:#5C3D1E;font-weight:600;line-height:1.4;flex:1;}
+  .mini .expire{font-size:10px;color:#D49A4E;font-weight:600;background:#FFF4E6;padding:3px 8px;border-radius:10px;}
+  .moods{display:flex;gap:8px;flex-wrap:wrap;}
+  .mood{font-size:12px;padding:8px 16px;background:#fff;color:#8B6239;border-radius:24px;font-weight:600;
+    box-shadow:0 2px 6px rgba(139,98,57,.1);}
+  .mood .e{margin-right:4px;}
+  /* tab */
+  .tabbar{position:absolute;bottom:0;left:0;right:0;height:80px;background:#FFF8F0;border-top:1px solid #F0E0CC;
+    display:flex;padding:10px 0 24px;}
+  .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:#C49B6E;font-weight:600;}
+  .tab.active{color:#E89B5C;}
+  .tab .ic{width:24px;height:24px;}
+  /* 详情 */
+  .detail-meta{display:flex;gap:6px;margin:8px 0 16px;}
+  .detail-meta span{font-size:11px;background:#FFF4E6;color:#8B6239;padding:5px 11px;border-radius:14px;font-weight:600;}
+  .detail-meta span.solid{background:#E89B5C;color:#fff;}
+  .detail h1{font-size:26px;line-height:1.3;color:#5C3D1E;font-weight:700;margin-bottom:14px;}
+  .quote{font-size:14px;color:#8B6239;line-height:1.75;background:#FFF4E6;border-radius:16px;padding:16px;margin:16px 0;}
+  .h2{font-size:15px;color:#5C3D1E;font-weight:700;margin:26px 0 14px;display:flex;align-items:center;gap:8px;}
+  .body p{font-size:14px;line-height:1.85;color:#6B4A2B;margin-bottom:12px;}
+  .view{background:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;
+    box-shadow:0 2px 6px rgba(139,98,57,.07);}
+  .view .vt{font-size:14px;color:#5C3D1E;font-weight:700;}
+  .view .vt small{color:#C49B6E;font-weight:600;font-size:12px;margin-left:6px;}
+  .view .vchev{color:#E89B5C;font-size:14px;font-weight:700;}
+  .round{margin:20px 0;}
+  .round .rt{font-size:12px;color:#E89B5C;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .round .rt .badge{background:#E89B5C;color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+  .bubble{margin-bottom:10px;}
+  .bubble .who{font-size:11px;margin-bottom:4px;font-weight:700;display:flex;align-items:center;gap:4px;}
+  .bubble.parent .who{color:#E89B5C;}
+  .bubble.child .who{color:#7BAE6E;}
+  .bubble .txt{font-size:14px;line-height:1.75;padding:13px 15px;border-radius:18px;}
+  .bubble.parent .txt{background:#fff;color:#5C3D1E;border-bottom-left-radius:5px;box-shadow:0 2px 6px rgba(139,98,57,.08);}
+  .bubble.child .txt{background:#F0F7E8;color:#5C3D1E;border:2px dashed #C5DEA8;border-bottom-right-radius:5px;}
+  .child-branch{margin:8px 0;}
+  .branch-item{font-size:12.5px;color:#6B4A2B;padding:10px 13px;background:#FFF4E6;border-radius:14px;margin-top:7px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .branch-item .go{color:#E89B5C;font-size:11px;font-weight:700;}
+  .coaching{margin-top:10px;background:#F5E6D3;border:2px dashed #D49A4E;border-radius:16px;padding:14px;}
+  .coaching .ct{font-size:11px;color:#D49A4E;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+  .coaching .row{font-size:12px;color:#6B4A2B;line-height:1.7;margin-bottom:6px;}
+  .coaching .row b{color:#5C3D1E;}
+  .next-round{font-size:13px;color:#E89B5C;text-align:center;padding:15px;border:2px dashed #F0CBAE;border-radius:16px;margin-top:10px;font-weight:700;}
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="statusbar"><span>9:41</span><span class="dot"><i></i><i></i><i></i></span></div>
+  <div class="topbar">
+    <div class="brand">知了·对话录<small>和孩子聊出思辨力</small></div>
+    <div class="top-actions">
+      <span class="agepill">少儿 6-9</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#5C3D1E" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </div>
+  </div>
+  <div class="scroll">
+    <div class="sec-label"><span class="deco">📖</span>今日推荐 <span style="font-size:11px;color:#C49B6E;font-weight:500;">6月24日</span></div>
+    <div class="hero">
+      <div class="meta"><b>经济·社会</b><span class="sep">·</span>★★<span class="sep">·</span>约20分钟</div>
+      <h2>给女性更多福利，<br>对她们就业是利是弊？</h2>
+      <div class="hook">为什么"保护"反而成了"束缚"？一项出于善意的政策，为何可能伤害它想保护的人。</div>
+      <div class="cta">🍽 马上读</div>
+    </div>
+
+    <div class="sec-label"><span class="deco">🔥</span>今日热点</div>
+    <div class="mini">
+      <div class="emoji">🗺</div>
+      <div class="t">方言该不该保护？一种语言消失意味着什么</div>
+      <div class="expire">11天</div>
+    </div>
+    <div class="mini">
+      <div class="emoji">🤖</div>
+      <div class="t">AI 给学生判作文，公平吗？</div>
+      <div class="expire">8天</div>
+    </div>
+
+    <div class="sec-label"><span class="deco">🎲</span>换一个 · 按心情</div>
+    <div class="moods">
+      <div class="mood"><span class="e">😊</span>轻松</div>
+      <div class="mood"><span class="e">🤯</span>烧脑</div>
+      <div class="mood"><span class="e">🥰</span>暖心</div>
+      <div class="mood"><span class="e">✨</span>启发</div>
+    </div>
+  </div>
+  <div class="tabbar">
+    <div class="tab active"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 11h3v9h5v-6h4v6h5v-9h3z"/></svg>今日</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5v14l8-3 8 3V5z"/></svg>话题库</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>锦囊</div>
+    <div class="tab"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>我的</div>
+  </div>
+  <div class="label">屏 1 · 首页</div>
+</div>
+
+<div class="phone">
+  <div class="statusbar"><span>9:41</span><span class="dot"><i></i><i></i><i></i></span></div>
+  <div class="topbar">
+    <svg style="width:22px;height:22px" viewBox="0 0 24 24" fill="none" stroke="#5C3D1E" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    <span class="agepill">少儿 6-9 ▾</span>
+    <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="none" stroke="#E89B5C" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+  </div>
+  <div class="scroll">
+    <div class="detail-meta"><span class="solid">经济·社会</span><span>★★</span><span>20 分钟</span></div>
+    <h1>给女性更多福利，<br>对她们就业是利是弊？</h1>
+    <div class="quote">💡 给妈妈放假越多、福利越好，听起来是好事。可产假越长，女性反而越难找工作。为什么"保护"成了"束缚"？</div>
+
+    <div class="h2"><span>📝</span> 这事是怎么回事</div>
+    <div class="body"><p>几乎每个国家都有针对女性的特殊福利——产假、哺乳室、提前退休。初衷都是好的：女性在生育中付出更多，理应得到补偿。</p>
+    <p>但经济学家发现一个反直觉现象：这类"保护性"政策越多的国家，女性就业率反而越低……</p></div>
+
+    <div class="h2"><span>🗺</span> 大家怎么看</div>
+    <div class="view"><div class="vt">🛡 保护论<small>补偿正义</small></div><div class="vchev">▾</div></div>
+    <div class="view"><div class="vt">💰 市场论<small>激励与成本</small></div><div class="vchev">▾</div></div>
+    <div class="view"><div class="vt">⚖️ 制度设计论<small>成本谁担</small></div><div class="vchev">▾</div></div>
+
+    <div class="h2"><span>🍽</span> 今晚怎么聊</div>
+    <div class="round">
+      <div class="rt"><span class="badge">1</span>开场：先听孩子的直觉</div>
+      <div class="bubble parent"><div class="who">👩 妈妈</div><div class="txt">今天跟你说个反直觉的事。给女员工更长的产假、更好的福利，听起来是帮她们对吧？但经济学研究发现，福利越好的国家，女性反而越难找工作。你说，这是为什么？</div></div>
+      <div class="child-branch">
+        <div class="branch-item">🧒 「不知道」<span class="go">→ 跳第②轮</span></div>
+        <div class="branch-item">🧒 「公司觉得女员工麻烦」<span class="go">→ 进第③轮</span></div>
+        <div class="branch-item">🧒 「女性自己不想工作了」<span class="go">→ 支线 A</span></div>
+      </div>
+      <div class="coaching">
+        <div class="ct">💡 父母怎么引导</div>
+        <div class="row"><b>目的</b>　先听孩子直觉判断，无论对错都别急着纠正。</div>
+        <div class="row"><b>变招</b>　说"不知道"用类比导入；说"公司麻烦"直接肯定进③；说"自己不想"记下来支线 A。</div>
+      </div>
+    </div>
+    <div class="next-round">展开第 ② 轮 ↓</div>
+
+    <div class="h2"><span>🧰</span> 思辨工具箱</div>
+    <div class="body" style="font-size:13px;color:#8B6239;">
+      <p><b style="color:#E89B5C">激励与成本</b>　改变成本就改变行为</p>
+      <p><b style="color:#E89B5C">看得见的与看不见的</b>　别只看得到得福利的人</p>
+    </div>
+  </div>
+  <div class="label">屏 2 · 详情页</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>知了·对话录 · 三版原型对比</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,"PingFang SC",sans-serif;background:#222;color:#fff;padding:30px;}
+  h1{text-align:center;font-size:24px;margin-bottom:8px;font-weight:600;}
+  .sub{text-align:center;color:#999;font-size:13px;margin-bottom:30px;}
+  .grid{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+  .col{width:300px;}
+  .col h3{text-align:center;font-size:17px;margin-bottom:6px;}
+  .col .desc{font-size:12px;color:#999;text-align:center;margin-bottom:16px;line-height:1.6;padding:0 8px;}
+  .swatch{display:flex;height:40px;border-radius:8px;overflow:hidden;margin-bottom:16px;}
+  .swatch div{flex:1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;}
+  iframe{width:300px;height:640px;border:none;border-radius:24px;background:#fff;}
+  .tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+  .tags span{font-size:10px;background:#333;padding:4px 9px;border-radius:10px;color:#ccc;}
+</style>
+</head>
+<body>
+<h1>知了·对话录 · 三版原型对比</h1>
+<div class="sub">每版含「首页 + 详情页」两个屏，点击右上角图标查看。每版风格面向不同家长画像。</div>
+
+<div class="grid">
+  <div class="col">
+    <h3>A · 温润书卷风</h3>
+    <div class="desc">面向<b>知识型家长</b>（教师/医生/工程师）。像一本高品质家庭读物，衬线字体+留白，支撑付费的"质感"。</div>
+    <div class="swatch">
+      <div style="background:#FAF7F2;color:#666">#FAF7F2</div>
+      <div style="background:#C8704B;color:#fff">#C8704B</div>
+      <div style="background:#2D2A26;color:#fff">#2D2A26</div>
+      <div style="background:#9C5B3B;color:#fff">#9C5B3B</div>
+    </div>
+    <div class="tags"><span>衬线字体</span><span>陶土橙</span><span>留白克制</span><span>书卷气</span></div>
+    <iframe src="A-温润书卷风.html"></iframe>
+  </div>
+
+  <div class="col">
+    <h3>B · 极简现代风</h3>
+    <div class="desc">面向<b>都市精英家长</b>（互联网/金融）。黑白灰+单一强调色，几何无衬线，像 Notion/Linear 的工具美学，冷静理性。</div>
+    <div class="swatch">
+      <div style="background:#FFFFFF;color:#666">#FFFFFF</div>
+      <div style="background:#0A0A0A;color:#fff">#0A0A0A</div>
+      <div style="background:#F5F5F5;color:#666">#F5F5F5</div>
+      <div style="background:#999;color:#fff">#999</div>
+    </div>
+    <div class="tags"><span>无衬线</span><span>黑白灰</span><span>强对比</span><span>工具感</span></div>
+    <iframe src="B-极简现代风.html"></iframe>
+  </div>
+
+  <div class="col">
+    <h3>C · 暖意手作风</h3>
+    <div class="desc">面向<b>陪伴型家长</b>（全职妈妈/文创/教育）。暖橙+奶咖，圆润字体+emoji+手账感，温暖治愈，像家庭日记。</div>
+    <div class="swatch">
+      <div style="background:#FFF8F0;color:#666">#FFF8F0</div>
+      <div style="background:#E89B5C;color:#fff">#E89B5C</div>
+      <div style="background:#5C3D1E;color:#fff">#5C3D1E</div>
+      <div style="background:#7BAE6E;color:#fff">#7BAE6E</div>
+    </div>
+    <div class="tags"><span>圆润字体</span><span>暖橙</span><span>emoji</span><span>治愈感</span></div>
+    <iframe src="C-暖意手作风.html"></iframe>
+  </div>
+</div>
+</body>
+</html>
